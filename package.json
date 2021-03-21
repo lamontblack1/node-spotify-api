@@ -1,0 +1,25 @@
+{
+  "name": "spotify-api",
+  "version": "1.0.0",
+  "description": "uses parameters to discern what kind of band or concert info needed and display it",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamontblack1/node-spotify-api.git"
+  },
+  "author": "longqicoding",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamontblack1/node-spotify-api/issues"
+  },
+  "homepage": "https://github.com/lamontblack1/node-spotify-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
+    "node-spotify-api": "^1.1.1"
+  }
+}
