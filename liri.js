@@ -30,7 +30,7 @@ case "concert-this":
   break;
 
 case "movie-this":
-  movieThis();
+  movieThis(infoForCall);
   break;
 
 case "do-what-it-says":
@@ -99,4 +99,48 @@ function spotifyThisSong(song) {
         }
         // console.log(data.tracks.items[0]); 
     });
+};
+
+function movieThis(movie) {
+        let apiUrl = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
+
+    // Then run a request with axios to the OMDB API with the movie specified
+axios.get(apiUrl).then(
+    function (response) {
+        console.log("----------------------------------------------")
+        console.log(response.data.Title)
+        console.log("Year released: " + response.data.Year)
+        for (let i = 0; i < response.data.Ratings.length; i++) {
+            const element = response.data.Ratings[i];
+            if (element.Source === "Internet Movie Database" || element.Source === "Rotten Tomatoes") {
+                console.log(element.Source + " rating: " + element.Value)
+            };
+            
+        }
+        console.log("Produced in: " + response.data.Country);
+            console.log("Language(s): " + response.data.Language);
+            console.log("Plot: " + response.data.Plot);
+            console.log("Actors: " + response.data.Actors);
+    
+  })
+  .catch(function(error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log("---------------Data---------------");
+      console.log(error.response.data);
+      console.log("---------------Status---------------");
+      console.log(error.response.status);
+      console.log("---------------Status---------------");
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an object that comes back with details pertaining to the error that occurred.
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log("Error", error.message);
+    }
+    console.log(error.config);
+  });
 }
