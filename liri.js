@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require('axios')
 const Spotify = require('node-spotify-api');
-const fs = require("fs");
+const fs = require("fs");   //to read random.txt
 const keys = require("./keys.js");
 const moment = require('moment');
 moment().format();
@@ -11,7 +11,7 @@ let action = ""
 let info = ""
 
 //get and format the arguments
-// if the first argument is do what it says it must take the arguments from random.txt
+// if the first argument is 'do what it says' it must take the arguments from random.txt
 if (process.argv[2] === "do-what-it-says") {
     const Data = fs.readFileSync('random.txt', 
         { encoding: 'utf8', flag: 'r' });
@@ -24,8 +24,10 @@ else {
     action = process.argv[2];
     info = process.argv[3];
 };
+
+
 //put the string input in format for api call
-let infoForCall = info
+let infoForCall = info  // if it is one word the next if will not be executed
 if ((info.indexOf(" ")) !== -1) {
     infoForCall = info.replace(/ /gi, "+");
 };
@@ -37,14 +39,14 @@ case "concert-this":
 
     case "spotify-this-song":
         if (infoForCall === "") {
-            infoForCall = "the sign"
+            infoForCall = "the sign"   //default if no parameter inputted
         }
         spotifyThisSong(infoForCall);
     break;
 
     case "movie-this":
         if (infoForCall === "") {
-            infoForCall = "mr. nobody"
+            infoForCall = "mr. nobody"    //default if no parameter inputted
         }
         movieThis(infoForCall);
     break;
@@ -108,11 +110,11 @@ function spotifyThisSong(song) {
         for (let i = 0; i < data.tracks.items.length; i++) {
             const element = data.tracks.items[i];
             for (let j = 0; j < element.artists.length; j++) {
-                console.log("Artist(s):________________________________________")
+                console.log("_______________________________________________")
+                console.log("Artist(s):")
                 console.log(element.artists[j].name);
                 console.log("Album name: " + element.album.name)
-                console.log("Preview URL: " + data.tracks.items[j].preview_url)
-                console.log("_______________________________________________")
+                console.log("Preview URL: " + data.tracks.items[j].uri)
             }
         }
         // console.log(data.tracks.items[0]); 
