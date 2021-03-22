@@ -1,4 +1,4 @@
-# node-spotify-api
+# [node-spotify-api](https://lamontblack1.github.io/node-spotify-api/)
 My first command line node app that takes in parameters and gives you back data.
 The app is solving the problem of using a terminal to make and view api calls. NPM libraries are used to simplify this process. This was also an opportunity to learn how to protect private or proprietary information from becoming available to the public at large accessing my project.
 My role in this project is creator. I was provided help with DotEnv from the instructions for the project.
@@ -27,5 +27,14 @@ node liri.js param1 param2
 
 # Screen Shots of the Working App
 
+Here is an example of "concert-this" command:
+![Image of concertThis](https://lamontblack1.github.io/node-spotify-api/images/concertThis.jpg)
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+Here is an example of "spotify-this-song" command:
+![Image of spotifyThisSong](https://lamontblack1.github.io/node-spotify-api/images/spotifyThisSong.jpg)
+
+Here is an example of "movie-this" command:
+![Image of movie-this](https://lamontblack1.github.io/node-spotify-api/images/movieThis.jpg)
+
+Here is an example of "do-what-it-says" command. This command reads from the 'random.txt', which will include a command and the song/movie/artist parameter:
+![Image of doWhatItSays](https://lamontblack1.github.io/node-spotify-api/images/doWhatItSays.jpg)
