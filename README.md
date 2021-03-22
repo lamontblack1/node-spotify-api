@@ -8,7 +8,7 @@ For the user, this app puts a large variety of information about current popular
 
 For the beginning coder, this project demonstrates use of various npm libraries and api calls.
 
-* [DotEnv](https://www.npmjs.com/package/dotenv) package is used to set environment variables to the global `process.env` object in node. We are gitignoring this file which stores api keys, so it won't be pushed to github &mdash; keeping our API key information private. Like this: inside the keys.js file is
+* [DotEnv](https://www.npmjs.com/package/dotenv) package is used to set environment variables to the global `process.env` object in node. We are gitignoring this file which stores api keys, so it won't be pushed to github &mdash; keeping our API key information private. Like this:  inside the keys.js file is
         ```js
         console.log('this is loaded');
 
