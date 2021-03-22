@@ -1,21 +1,34 @@
 require("dotenv").config();
 const axios = require('axios')
 const Spotify = require('node-spotify-api');
-//still need to require a few others
+const fs = require("fs");
 const keys = require("./keys.js");
 const moment = require('moment');
 moment().format();
 
 let spotify = new Spotify(keys.spotify);
-
+let action = ""
+let info = ""
 
 //get and format the arguments
-let action = process.argv[2];
-let info = process.argv[3]
+// if the first argument is do what it says it must take the arguments from random.txt
+if (process.argv[2] === "do-what-it-says") {
+    const Data = fs.readFileSync('random.txt', 
+        { encoding: 'utf8', flag: 'r' });
+     var output = Data.split(",");
+         action = output[0]
+         info = output[1]   
+         console.log(action)
+}
+else {
+    action = process.argv[2];
+    info = process.argv[3];
+};
+//put the string input in format for api call
 let infoForCall = info
 if ((info.indexOf(" ")) !== -1) {
     infoForCall = info.replace(/ /gi, "+");
-}
+};
 
 switch (action) {
 case "concert-this":
@@ -26,16 +39,21 @@ case "concert-this":
         if (infoForCall === "") {
             infoForCall = "the sign"
         }
-  spotifyThisSong(infoForCall);
-  break;
+        spotifyThisSong(infoForCall);
+    break;
 
-case "movie-this":
-  movieThis(infoForCall);
-  break;
+    case "movie-this":
+        if (infoForCall === "") {
+            infoForCall = "mr. nobody"
+        }
+        movieThis(infoForCall);
+    break;
 
-case "do-what-it-says":
-  doWhatItSays();
-  break;
+    default:
+        console.log(action + " is not a valid command. Try again.")
+    break;
+    
+
 };
 
 function concertThis(artist) {
@@ -143,4 +161,4 @@ axios.get(apiUrl).then(
     }
     console.log(error.config);
   });
-}
+};
