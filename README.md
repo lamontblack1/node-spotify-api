@@ -8,23 +8,27 @@ For the user, this app puts a large variety of information about current popular
 
 For the beginning coder, this project demonstrates use of various npm libraries and api calls.
 
-* [DotEnv](https://www.npmjs.com/package/dotenv) package is used to set environment variables to the global `process.env` object in node. We are gitignoring this file which stores api keys, so it won't be pushed to github &mdash; keeping our API key information private. Like this:  inside the keys.js file is
-        ```js
-        console.log('this is loaded');
+* [DotEnv](https://www.npmjs.com/package/dotenv) package is used to set environment variables to the global `process.env` object in node. We are gitignoring this file which stores api keys, so it won't be pushed to github &mdash; keeping our API key information private. Like this: 
+inside the keys.js file is
 
-        exports.spotify = {
-        id: process.env.SPOTIFY_ID,
-        secret: process.env.SPOTIFY_SECRET
-        };
-        ```
-        Inside my local .env file is:
-        ```js
-        # Spotify API keys
+```js
+console.log('this is loaded');
 
-        SPOTIFY_ID=your-spotify-id
-        SPOTIFY_SECRET=your-spotify-secret
+exports.spotify = {
+id: process.env.SPOTIFY_ID,
+secret: process.env.SPOTIFY_SECRET
+};
+```
+Inside my local .env file is:
 
-        ```
+```js
+# Spotify API keys
+
+SPOTIFY_ID=your-spotify-id
+SPOTIFY_SECRET=your-spotify-secret
+
+```
+
 * [Axios](https://www.npmjs.com/package/axios) npm library is used to make api calls
 * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api) is used to make calls to the Spotify api
 * [Moment](https://www.npmjs.com/package/moment) npm library is used to format dates
